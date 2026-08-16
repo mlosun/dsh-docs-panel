@@ -4,6 +4,9 @@ node_modules/
 # 测试产物
 markdown-test-output.html
 
+# 视觉工具临时产物
+.dsh-vision-router/
+
 # 系统与编辑器
 .DS_Store
 *.log
