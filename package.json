@@ -1,7 +1,7 @@
 {
   "name": "dsh-docs-panel",
   "version": "0.0.1",
-  "description": "在 DeepSeek Harness 网页里阅读自己的 Markdown 手册：把 ~/.dsh/docs 的笔记搬进一个右侧滑出面板，点开即读，不用再切到别的编辑器。",
+  "description": "DSH WebUI 里的「随身手册」：全局 Markdown 笔记，任何工作区随时可读。",
   "type": "module",
   "main": "lib/index.js",
   "exports": {

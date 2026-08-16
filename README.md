@@ -1,10 +1,12 @@
 # dsh-docs-panel
 
+> DSH WebUI 里的「随身手册」：全局 Markdown 笔记，任何工作区随时可读。
+
 [![npm](https://img.shields.io/npm/v/dsh-docs-panel)](https://www.npmjs.com/package/dsh-docs-panel)
 [![npm-downloads](https://img.shields.io/npm/dm/dsh-docs-panel)](https://www.npmjs.com/package/dsh-docs-panel)
 [![license](https://img.shields.io/npm/l/dsh-docs-panel)](https://github.com/mlosun/dsh-docs-panel/blob/main/LICENSE)
 
-把你自己整理的 Markdown 手册，直接搬进 DeepSeek Harness 的网页里读。
+把你自己整理的 Markdown 笔记，直接搬进 DeepSeek Harness 的网页里读。
 
 你攒在 `~/.dsh/docs` 的笔记、排查手册、使用说明，不必再切到别的编辑器——装在 dsh 里就能点开即读：右侧滑出面板、排版干净的正文、随时跳转的大纲，读完一键就能转到 Chrome 或 VS Code 继续编辑。
 
