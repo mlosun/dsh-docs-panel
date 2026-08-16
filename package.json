@@ -1,0 +1,46 @@
+{
+  "name": "dsh-docs-panel",
+  "version": "0.0.1",
+  "description": "在 DeepSeek Harness 网页里阅读自己的 Markdown 手册：把 ~/.dsh/docs 的笔记搬进一个右侧滑出面板，点开即读，不用再切到别的编辑器。",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web"
+    }
+  },
+  "files": [
+    "lib/index.js",
+    "lib/client.js",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "license": "MIT",
+  "author": "mlosun",
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "markdown",
+    "docs",
+    "reading",
+    "web"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mlosun/dsh-docs-panel.git"
+  },
+  "homepage": "https://github.com/mlosun/dsh-docs-panel#readme"
+}

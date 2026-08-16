@@ -1,0 +1,11 @@
+# 依赖
+node_modules/
+
+# 测试产物
+markdown-test-output.html
+
+# 系统与编辑器
+.DS_Store
+*.log
+.idea/
+.vscode/

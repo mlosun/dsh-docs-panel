@@ -1,0 +1,5 @@
+# dsh-docs-panel bundle patch：向 web 档案追加一个宿主行。
+# 行名从档案自身的 node_modules 解析（`dsh plugin --profile web add <包>` 安装后生效）。
+- insert:
+    - id: docs-panel
+      name: dsh-docs-panel
