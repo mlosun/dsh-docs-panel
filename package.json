@@ -1,7 +1,7 @@
 {
   "name": "dsh-docs-panel",
-  "version": "0.0.1",
-  "description": "DSH WebUI 里的「随身手册」：全局 Markdown 笔记，任何工作区随时可读。",
+  "version": "0.1.0",
+  "description": "DSH 侧边栏里的「全局文档」：全局 Markdown 笔记，任何工作区随时可读。（依赖 dsh-better-sidebar）",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
@@ -18,8 +18,14 @@
       "patch": "./cordis.patch.yml"
     },
     "client": {
-      "platform": "web"
+      "platform": "web",
+      "inject": [
+        "timer"
+      ]
     }
+  },
+  "peerDependencies": {
+    "dsh-better-sidebar": ">=0.4.0"
   },
   "files": [
     "lib/index.js",
@@ -33,10 +39,12 @@
     "deepseek-harness",
     "dsh",
     "dsh-plugin",
+    "better-sidebar",
     "markdown",
     "docs",
     "reading",
-    "web"
+    "web",
+    "sidebar"
   ],
   "repository": {
     "type": "git",

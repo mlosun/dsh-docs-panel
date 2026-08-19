@@ -29,7 +29,7 @@ const React = {
 // ---- 提取插件源码里的渲染函数段 ----
 const src = fs.readFileSync(__dirname + '/lib/client.js', 'utf8')
 const start = src.indexOf('    let currentReadRel')
-const end = src.indexOf('    function DocsPanel')
+const end = src.indexOf('    function DocsView')
 if (start < 0 || end < 0) {
   console.error('FAIL: 无法在 lib/client.js 中定位渲染函数段')
   process.exit(1)
