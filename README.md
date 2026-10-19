@@ -5,7 +5,7 @@
 [![npm](https://img.shields.io/npm/v/dsh-docs-panel)](https://www.npmjs.com/package/dsh-docs-panel)
 [![license](https://img.shields.io/npm/l/dsh-docs-panel)](https://github.com/mlosun/dsh-docs-panel/blob/main/LICENSE)
 [![requires](https://img.shields.io/badge/requires-dsh--better--sidebar-4d6bfe)](https://github.com/omdsh-dev/DSH-better-sidebar)
-[![platform](https://img.shields.io/badge/platform-macOS-lightgrey)](https://github.com/mlosun/dsh-docs-panel)
+[![platform](https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-lightgrey)](https://github.com/mlosun/dsh-docs-panel)
 
 把你自己整理的 Markdown 笔记，直接搬进 DeepSeek Harness 的侧边栏里读。
 
@@ -24,7 +24,7 @@
 - 📚 **列表点选阅读**：自动列出文档目录下所有 `.md` 文件（含子目录），点一下就读；
 - 🎨 **良好排版**：标题、列表、表格、代码块、引用、链接都渲染得规整，自动适配亮色/暗色主题；
 - 🧭 **悬浮大纲**：一键展开文档目录，点标题平滑跳转（默认收起，不打扰阅读）；
-- 🌐 **外部打开**：每篇文档提供「Chrome 打开」「VS Code 打开」按钮，随时转到编辑器继续编辑（目前仅支持 macOS）；
+- 🌐 **外部打开**：每篇文档提供「Chrome 打开」「VS Code 打开」按钮，随时转到编辑器继续编辑（macOS 用 `open -a`，Windows 用 `Start-Process`，Linux 用 `xdg-open`）；
 - 📋 **代码复制**：代码块右上角一键复制；
 - 📁 **目录可配置**：默认读 `~/.dsh/docs`，可在面板里改成任何目录，保存后永久生效；
 - 🧩 **侧边栏集成**：作为 better-sidebar 的一个 tab 注册，与内置页面同风格（图标、头部、按钮对齐内置），随侧边栏布局按会话持久化。
@@ -74,8 +74,25 @@ dsh plugin --profile web remove dsh-docs-panel
 
 **没装 better-sidebar 能用吗？** 不能。本插件 v0.1.0 起作为 better-sidebar 的侧边栏页面运行，未安装 better-sidebar 时插件不会显示任何界面。
 
-## 开发
+## 兼容性
 
+| DSH 版本 | 状态 |
+| --- | --- |
+| `0.2.1` 及以上 | ✅ 支持 |
+| `0.1.x` | ✅ 支持 |
+
+宿主端只用 Node.js 内置模块（`node:os`、`node:fs/promises`）解析主目录与创建配置目录，**不再依赖 shell 子进程**；外部打开与剪贴板按平台分别调用 `open -a`（macOS）、`Start-Process`（Windows）、`xdg-open`（Linux）。
+
+### 从 0.1.x 升级到 0.2.x 时的已知问题
+
+DSH `0.2.1` 移除了 `shell.run()`（只保留 `resolve()`，执行改走 `shell.execute()`）。`v0.1.0` 的 `getHome()` 与 `persistConfiguredDir()` 都调用了 `shell.run`，因此会出现：
+
+- 文档列表始终为空（`getHome()` 抛错被 catch 后返回 `null`，`~` 不展开，默认目录 `~/.dsh/docs` 原样交给 `fs.resolve` ⟹ 目录不存在）；
+- 面板里保存文档目录失败，报「保存失败：无法获取主目录」。
+
+本版本已修复。
+
+## 开发
 ```bash
 node markdown-test.cjs   # 自测 Markdown 渲染器
 ```
