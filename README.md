@@ -29,6 +29,12 @@
 - 📁 **目录可配置**：默认读 `~/.dsh/docs`，可在面板里改成任何目录，保存后永久生效；
 - 🧩 **侧边栏集成**：作为 better-sidebar 的一个 tab 注册，与内置页面同风格（图标、头部、按钮对齐内置），随侧边栏布局按会话持久化。
 
+## 兼容性（Compatibility）
+
+- **DSH 0.2.1 及以上**：请使用包含此修复的版本。DSH 0.2.1 的 `shell` 服务移除了 `run()` 方法，而旧版 `getHome()` / `persistConfiguredDir()` 依赖 `shell.run`，表现为：配置读不到（`~/.dsh/storages/dsh-docs-panel/config.json` 被忽略）、文档列表为空、面板里保存目录失败。本版改为用 `node:os` 的 `homedir()` 解析主目录、用 `node:fs/promises` 的 `mkdir` 创建配置目录，读取与保存路径不再经过 shell。
+- **DSH 0.1.x**：同样兼容（只用 Node 内置模块，无新增依赖）。
+- **外部打开 / 剪贴板**：「Chrome 打开」「VS Code 打开」与代码复制仍通过 `shell.run` 调用 macOS 的 `open -a` / `pbcopy`，这一平台限制不变——仅支持 macOS。
+
 ## 安装
 
 **第一步**：安装依赖（如果还没装过）：
